@@ -17,7 +17,7 @@ class PruebaController extends AbstractController
     public function __construct(private NoticiaRepository $noticiaRepository, private ConversorTituloMayuscula $conversorTituloMayuscula ){}
 
 
-    public function listNoticias(): array {
+    /*public function listNoticias(): array {
         $result = [];
         $not = new Noticia();
         $not->setTitulo("titulo 1");
@@ -37,15 +37,15 @@ class PruebaController extends AbstractController
 
         return $result;
 
-    }
+    }*/
 
 
 
     public function __invoke( Request $request): JsonResponse
     {
         try {
-            //$noticias = $this->noticiaRepository->findAll();
-            $noticias = $this->listNoticias();                      // Esta línea sustituye a la línea 45 que coge las noticias de la base de datos
+            $noticias = $this->noticiaRepository->findAll();
+            //$noticias = $this->listNoticias();                      // Línea de prueba
             $result = [];
             foreach ($noticias as $noticia) {
                 $result[] = $this->conversorTituloMayuscula->getTituloMayuscula($noticia);
