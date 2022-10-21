@@ -1,0 +1,4 @@
+get-noticias:
+  path: /get-noticias
+  controller: App\Controller\PruebaController
+  methods: [ GET ]
